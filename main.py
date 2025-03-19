@@ -157,8 +157,6 @@ def extract_data():
         extracted_text = extract_text_from_image(image_path)
         if extracted_text:
             is_data_extracted[st.session_state['page_index']] = True
-            # print('pdf here')
-            # insert_cheque_details(extracted_text)
             show_cheque_details(extracted_text)
 
 def crop_cheque_area(image):
@@ -168,14 +166,14 @@ def crop_cheque_area(image):
         cropped_image = image.crop(bbox)
         return cropped_image
     return image  # Fallback to original image if bbox is not found
-
 def pdf_to_images(uploaded_file):
+    poppler_path = r"C:\Program Files\poppler-24.08.0\Library\bin"
     with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp_file:
         tmp_file.write(uploaded_file.getbuffer())
         pdf_path = tmp_file.name   # Convert the uploaded file to an absolute path
 
     print("PDF path:", pdf_path)
-    images = convert_from_path(pdf_path=pdf_path, dpi=300)
+    images = convert_from_path(pdf_path=pdf_path, dpi=300, poppler_path=poppler_path)
 
     output_dir = "extracted_images"
     if not os.path.exists(output_dir):
