@@ -95,11 +95,8 @@ def fetch_cheque_details():
         c = conn.cursor()
         c.execute(select_query)
         data = c.fetchall()   
-        conn.close()
-        df = pd.DataFrame(data)
-        df["Amount"] = df["Amount"].str.replace(",", "").astype(float)
-        df["Date"] = pd.to_datetime(df["Date"])
-        return df
+        conn.close()       
+        return data
     except Exception as e:
         print(f"Error fetching cheque details: {e}")
         return []
