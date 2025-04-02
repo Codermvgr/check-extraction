@@ -32,7 +32,7 @@ To run the project locally, follow these steps:
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/bank-check-extraction.git
+   git clone https://github.com/Codermvgr/check-extraction.git
    cd bank-check-extraction
    ```
 2. Create a virtual environment and activate it:
@@ -46,7 +46,7 @@ To run the project locally, follow these steps:
    ```
 4. Run the Streamlit app:
    ```bash
-   streamlit run app.py
+   streamlit run main.py
    ```
 5. Open the application in your browser:
    ```
